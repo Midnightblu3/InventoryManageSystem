@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModifyProductForm">
+   <children>
+      <StackPane prefHeight="600.0" prefWidth="1000.0">
+         <children>
+            <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#1f93ff00" height="550.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="900.0" />
+            <GridPane maxHeight="500.0" maxWidth="850.0" minWidth="850.0" prefHeight="500.0" prefWidth="850.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="575.0" minWidth="10.0" prefWidth="346.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="583.0" minWidth="10.0" prefWidth="454.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="182.0" minWidth="27.0" prefWidth="50.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0" minWidth="10.0" prefWidth="321.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="100.0" minHeight="150.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="295.0" minHeight="250.0" prefHeight="250.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="123.0" text="Modify Product" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Label>
+                        <Label text="ID" GridPane.rowIndex="1" />
+                        <Label layoutX="10.0" layoutY="172.0" text="Name" GridPane.rowIndex="2" />
+                        <Label layoutX="10.0" layoutY="212.0" text="Inv" GridPane.rowIndex="3" />
+                        <Label layoutX="10.0" layoutY="252.0" text="Max" GridPane.rowIndex="5" />
+                        <TextField fx:id="ModProdIdTxf" disable="true" editable="false" maxWidth="200.0" prefWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="ModProdNameTxf" layoutX="158.0" layoutY="168.0" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="ModProdInvTxf" layoutX="158.0" layoutY="208.0" maxWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label text="Price" GridPane.rowIndex="4" />
+                        <TextField fx:id="ModProdPriceTxf" layoutX="158.0" layoutY="328.0" maxWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <children>
+                              <TextField fx:id="ModProdMaxTxf" maxWidth="120.0" minWidth="120.0" />
+                              <Label alignment="CENTER" minWidth="30.0" text="Min" />
+                              <TextField fx:id="ModProdMinTxf" maxWidth="120.0" minWidth="120.0" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="ErrorText" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                     </children>
+                  </GridPane>
+                  <GridPane prefHeight="600.0" prefWidth="460.0" GridPane.columnIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <VBox prefWidth="100.0">
+                           <children>
+                              <HBox alignment="TOP_RIGHT" prefHeight="32.0" prefWidth="454.0">
+                                 <children>
+                                    <TextField fx:id="ModProdSearchTxf" minWidth="180.0" onKeyTyped="#ModProdSearchTxfChanged" prefHeight="25.0" prefWidth="180.0" promptText="Search by Part ID or Name">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin></TextField>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="189.0" prefWidth="454.0">
+                                 <children>
+                                    <TableView fx:id="ModProdPartTable" prefHeight="185.0" prefWidth="486.0">
+                                      <columns>
+                                        <TableColumn fx:id="ModProdPartIdCol" prefWidth="75.0" text="Part ID" />
+                                        <TableColumn fx:id="ModProdPartNameCol" prefWidth="125.0" text="Part Name" />
+                                          <TableColumn fx:id="ModProdInvCol" prefWidth="125.0" text="Inventory Level" />
+                                          <TableColumn fx:id="ModProdPriceCol" prefWidth="153.0" text="Price/ Cost per Unit" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="ModProdAddBtn" mnemonicParsing="false" onAction="#OnModProdAddBtn" text="Add">
+                                       <HBox.margin>
+                                          <Insets right="30.0" />
+                                       </HBox.margin></Button>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+                           <children>
+                              <HBox prefHeight="261.0" prefWidth="479.0">
+                                 <children>
+                                    <TableView fx:id="ModProdAssoPartTable" prefHeight="191.0" prefWidth="495.0">
+                                      <columns>
+                                        <TableColumn fx:id="ModProdAssoPartIdCol" prefWidth="75.0" text="Part ID" />
+                                        <TableColumn fx:id="ModProdAssoPartNameCol" prefWidth="125.0" text="Part Name" />
+                                          <TableColumn fx:id="ModProdAssoInvCol" prefWidth="125.0" text="Inventory Level" />
+                                          <TableColumn fx:id="ModProdAssoPriceCol" prefWidth="153.0" text="Price/ Cost per Unit" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="ModProdRemoveBtn" mnemonicParsing="false" onAction="#OnModProdRemoveBtn" text="Remove Associated Part" />
+                                 </children>
+                                 <padding>
+                                    <Insets right="30.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                                 <children>
+                                    <Button fx:id="ModProdSaveBtn" mnemonicParsing="false" onAction="#OnModProdSaveBtn" text="Save" />
+                                    <Button fx:id="ModProdCancelBtn" mnemonicParsing="false" onAction="#OnModProdCancelBtn" text="Cancel" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets right="30.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
